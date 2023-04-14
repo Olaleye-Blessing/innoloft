@@ -1,0 +1,16 @@
+# INNOLOFT
+
+## Setup
+
+Create a .env file in the root directory and add this variable:
+
+```bash
+VITE_APP_ID=1
+```
+
+## Run
+
+```bash
+yarn
+yarn dev
+```
