@@ -11,7 +11,7 @@ interface ProductState {
 }
 
 const initialState: ProductState = {
-  status: 'loading',
+  status: 'idle',
   error: undefined,
   data: null,
 }
@@ -32,6 +32,10 @@ export const productSlice = createSlice({
       state.status = 'failed'
       state.error = action.error.message
     })
+    builder.addCase(saveProduct.fulfilled, (state, action) => {
+      state.status = 'idle'
+      state.data = action.payload
+    })
   },
 })
 
@@ -45,6 +49,15 @@ export const fetchProduct = createAsyncThunk(
     } catch (error: any) {
       return rejectWithValue(error.response.data)
     }
+  }
+)
+
+export const saveProduct = createAsyncThunk(
+  'product/saveProduct',
+  async (product: Product) => {
+    await axios.put(`${BASE_URL}/product/6781/`, product)
+
+    return product
   }
 )
 

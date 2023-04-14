@@ -1,17 +1,22 @@
 import { FC } from 'react'
 import OfferDetail from './OfferDetail'
 import { Product } from '@/interfaces/Product'
+import { handleEditProduct } from '@/pages/product/Edit'
 
-type Props = Pick<
-  Product,
-  'categories' | 'businessModels' | 'trl' | 'investmentEffort'
->
+interface Props
+  extends Pick<
+    Product,
+    'categories' | 'businessModels' | 'trl' | 'investmentEffort'
+  > {
+  handleEditProduct?: handleEditProduct
+}
 
 const Offer: FC<Props> = ({
   businessModels,
   categories,
   investmentEffort,
   trl,
+  handleEditProduct,
 }) => {
   const details = {
     businessModels,
@@ -23,7 +28,14 @@ const Offer: FC<Props> = ({
   return (
     <ul className='lg:grid lg:grid-cols-2 lg:gap-x-[2.796875rem] lg:gap-y-4'>
       {Object.entries(details).map(([label, value]) => {
-        return <OfferDetail key={label} label={label} value={value} />
+        return (
+          <OfferDetail
+            key={label}
+            label={label}
+            value={value}
+            handleEditProduct={handleEditProduct}
+          />
+        )
       })}
     </ul>
   )

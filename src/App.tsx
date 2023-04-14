@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import Layout from '@/components/Layout'
 import Home from '@/pages/Index'
 import Product from '@/pages/product/Index'
+import EditProduct from '@/pages/product/Edit'
 import { store } from '@/app/store'
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: '/product/',
         element: <Product />,
+      },
+      {
+        path: '/product/edit',
+        element: <EditProduct />,
       },
     ],
   },
