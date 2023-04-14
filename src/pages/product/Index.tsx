@@ -1,35 +1,26 @@
-import { product } from '@/data/product'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Section from '@/modules/product/Section'
 import UserInfo from '@/modules/product/UserInfo'
 import Main from '@/modules/product/Main'
 import Video from '@/modules/product/Video'
 import Offer from '@/modules/product/Offer'
+import { useAppDispatch, useAppSelector } from '@/app/hooks'
+import { fetchProduct } from '@/app/slices/product'
 
 const Index = () => {
-  const [data, setData] = useState({
-    loading: true,
-    error: false,
-    product,
-  })
+  const dispatch = useAppDispatch()
+  const { data: config } = useAppSelector((state) => state.config)
+  const { data: product, status } = useAppSelector((state) => state.product)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setData((prev) => ({ ...prev, loading: false }))
-    }, 1_000)
-
-    return () => {
-      clearTimeout(timer)
-    }
+    dispatch(fetchProduct())
   }, [])
 
   return (
     <>
-      {data.loading ? (
-        <div>Loading...</div>
-      ) : data.error ? (
-        <div>Error</div>
-      ) : (
+      {status === 'loading' && <div>Loading...</div>}
+      {status === 'failed' && <div>Error</div>}
+      {status === 'idle' && product && (
         <>
           <header className='flex items-center justify-between mb-5'>
             <div>{/* breadcrumbs */}</div>
@@ -44,7 +35,9 @@ const Index = () => {
               type={product.type}
               name={product.name}
             />
-            <UserInfo user={product.user} company={product.company} />
+            {config!.hasUserSection && (
+              <UserInfo user={product.user} company={product.company} />
+            )}
           </Section>
           <Section title='Video'>
             <Video video={product.video} />

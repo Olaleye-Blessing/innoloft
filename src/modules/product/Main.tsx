@@ -22,8 +22,8 @@ const Main: FC<Props> = ({ name, picture, description, type }) => {
       </div>
       <div className='pl-5 lg:px-5 lg:pb-[1.875rem]'>
         <h2 className='mb-[0.625rem]'>{name}</h2>
-        {descriptions.map((desc) => (
-          <p key={desc} className='mt-2'>
+        {descriptions.map((desc, key) => (
+          <p key={key} className='mt-2'>
             {desc}
           </p>
         ))}
