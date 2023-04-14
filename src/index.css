@@ -6,6 +6,15 @@
   body {
     @apply bg-white text-black;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-black-1 font-bold text-base;
+  }
 }
 
 @layer components {
