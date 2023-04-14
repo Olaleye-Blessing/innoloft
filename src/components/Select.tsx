@@ -8,10 +8,7 @@ interface Props extends React.SelectHTMLAttributes<HTMLSelectElement> {
 const Select: FC<Props> = ({ label, options, ...rest }) => {
   return (
     <div>
-      <label
-        htmlFor={rest.id}
-        className='form__label'
-      >
+      <label htmlFor={rest.id} className='form__label'>
         {label}
       </label>
       <select {...rest} className='form__select'>

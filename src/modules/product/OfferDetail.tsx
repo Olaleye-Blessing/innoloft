@@ -88,7 +88,7 @@ const OfferDetail: FC<Props> = ({ label, value, handleEditProduct }) => {
           </ul>
           {handleEditProduct && (
             <Input
-              label=''
+              label='item'
               onKeyDown={(e) => {
                 if (e.key === 'Enter') e.preventDefault()
               }}
@@ -131,7 +131,7 @@ const OfferDetail: FC<Props> = ({ label, value, handleEditProduct }) => {
           <OfferValue value={value} as='p' />
           {handleEditProduct && labels[label].title === 'TRL' && (
             <Select
-              label=''
+              label='TRL'
               options={uniqueItems(value).map((item) => ({
                 value: item,
                 label: item,

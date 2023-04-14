@@ -23,7 +23,7 @@
   }
 
   .form__label {
-    @apply block text-sm font-medium leading-6 text-gray-900;
+    @apply sr-only;
   }
 
   .form__input {

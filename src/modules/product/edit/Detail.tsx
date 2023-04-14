@@ -47,7 +47,7 @@ const Detail: FC<Props> = ({ detail, name, handleEditProduct }) => {
   return (
     <>
       <Input
-        label=''
+        label='name'
         name='name'
         id='name'
         value={edited.name}
@@ -55,7 +55,7 @@ const Detail: FC<Props> = ({ detail, name, handleEditProduct }) => {
       />
       <TextArea
         name='detail'
-        label=''
+        label='detail'
         value={edited.detail}
         onChange={hanldeChange}
       />

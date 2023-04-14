@@ -19,6 +19,7 @@ const OfferValue: FC<Props> = ({ id, value, as, handleRemoveItem }) => {
           className='absolute top-[-0.3125rem] -right-1 text-red-700'
           type='button'
           onClick={() => handleRemoveItem(id!)}
+          aria-label='Remove item'
         >
           <XMarkIcon className='w-5 h-5' />
         </button>

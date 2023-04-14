@@ -12,7 +12,7 @@ const Video: FC<Props> = ({ video, handleEditProduct }) => {
   if (handleEditProduct)
     return (
       <Input
-        label=''
+        label='Video'
         type='url'
         name='video'
         id='video'
