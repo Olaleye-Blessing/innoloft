@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
+import configReducer from '@/app/slices/config'
 
 export const store = configureStore({
   reducer: {
-    test: () => 'test',
+    config: configReducer,
   },
 })
 
